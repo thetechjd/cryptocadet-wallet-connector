@@ -1,4 +1,3 @@
-import React from 'react';
 import { WalletConnector } from './components/WalletConnector';
 import { useWalletConnector } from './hooks/useWalletConnector';
 import './styles/WalletConnector.css';

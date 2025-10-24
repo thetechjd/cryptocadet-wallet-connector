@@ -4,9 +4,8 @@
 import { useState, useEffect } from 'react';
 import { BrowserProvider } from 'ethers';
 import { SUPPORTED_WALLETS, NETWORKS } from '../constants';
-import { ConnectedWalletData, NetworkConfig } from '../types';
 
-export const useWalletConnector = (targetChainId: number = 1) => {
+export const useWalletConnector = () => {
   const [walletType, setWalletType] = useState<string | null>(null);
   const [address, setAddress] = useState<string | null>(null);
   const [chainId, setChainId] = useState<number | null>(null);
