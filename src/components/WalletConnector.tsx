@@ -7,7 +7,7 @@ import { WalletConnectorProps } from '../types';
 export const WalletConnector: React.FC<WalletConnectorProps> = ({
   onConnect,
   onDisconnect,
-  targetChainId = 1,
+  targetChainId: _targetChainId = 1,
   buttonText = 'Connect Wallet',
   buttonStyle,
 }) => {
@@ -22,7 +22,7 @@ export const WalletConnector: React.FC<WalletConnectorProps> = ({
     ethersProvider,
     connect,
     disconnect,
-  } = useWalletConnector(targetChainId);
+  } = useWalletConnector();
 
   useEffect(() => {
     if (isConnected && address && ethersProvider && onConnect) {

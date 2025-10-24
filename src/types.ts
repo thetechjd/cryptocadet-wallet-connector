@@ -2,6 +2,7 @@ import { BrowserProvider } from 'ethers';
 
 export interface WalletInfo {
   name: string;
+  chain: 'EVM' | 'Solana';
   check: () => boolean;
   getProvider: () => any;
   icon: string;

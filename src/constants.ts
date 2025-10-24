@@ -7,30 +7,75 @@ import trustwalletLogo from "./assets/trust-wallet-icon.png";
 
 
 export const SUPPORTED_WALLETS: Record<string, WalletInfo> = {
+  // EVM Wallets
   METAMASK: {
     name: 'MetaMask',
+    chain: 'EVM',
     check: () => typeof window.ethereum !== 'undefined' && window.ethereum.isMetaMask === true,
     getProvider: () => window.ethereum,
     icon: metamaskLogo
   },
   TRUSTWALLET: {
     name: 'Trust Wallet',
+    chain: 'EVM',
     check: () => typeof window.ethereum !== 'undefined' && window.ethereum.isTrust === true,
     getProvider: () => window.ethereum,
     icon: trustwalletLogo
   },
   COINBASE: {
     name: 'Coinbase Wallet',
+    chain: 'EVM',
     check: () => typeof window.ethereum !== 'undefined' && window.ethereum.isCoinbaseWallet === true,
     getProvider: () => window.ethereum,
     icon: coinbaseLogo
   },
   PHANTOM: {
     name: 'Phantom',
+    chain: 'EVM',
     check: () => typeof window.phantom?.ethereum !== 'undefined' && window.phantom.ethereum.isPhantom === true,
     getProvider: () => window.phantom?.ethereum,
     icon: phantomLogo
+  },
+
+  // Solana Wallets
+  PHANTOM_SOL: {
+    name: 'Phantom',
+    chain: 'Solana',
+    check: () => {
+      const solana = window.phantom?.solana;
+      return solana !== undefined && solana.isPhantom === true;
+    },
+    getProvider: () => window.phantom?.solana,
+    icon: phantomLogo
+  },
+  SOLFLARE: {
+    name: 'Solflare',
+    chain: 'Solana',
+    check: () => {
+      const solflare = window.solflare;
+      return solflare !== undefined && solflare.isSolflare === true;
+    },
+    getProvider: () => window.solflare,
+    icon: 'https://solflare.com/assets/logo.svg'
+  },
+  BACKPACK: {
+    name: 'Backpack',
+    chain: 'Solana',
+    check: () => {
+      const backpack = window.backpack;
+      return backpack !== undefined && backpack.isBackpack === true;
+    },
+    getProvider: () => window.backpack,
+    icon: 'https://backpack.app/icon.png'
   }
+};
+
+// Filter wallets by chain
+export const getWalletsByChain = (chain: 'EVM' | 'Solana' | 'all' = 'all') => {
+  if (chain === 'all') return SUPPORTED_WALLETS;
+  return Object.fromEntries(
+    Object.entries(SUPPORTED_WALLETS).filter(([_, wallet]) => wallet.chain === chain)
+  );
 };
 
 export const NETWORKS: Record<string, NetworkConfig> = {
