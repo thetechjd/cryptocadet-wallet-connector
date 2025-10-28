@@ -1,7 +1,7 @@
 {
   "name": "@cryptocadet/wallet-connector",
-  "version": "1.0.0",
-  "description": "A lightweight, Web3Modal alternative for connecting to MetaMask, Trust Wallet, Coinbase Wallet, and Phantom",
+  "version": "2.0.0",
+  "description": "A lightweight, Web3Modal alternative for connecting to MetaMask, Trust Wallet, Coinbase Wallet, Phantom, and SolFlare for EVM and Solana.",
   "type": "module",
   "main": "./dist/wallet-connector.umd.cjs",
   "module": "./dist/wallet-connector.js",
@@ -14,11 +14,10 @@
     },
     "./styles.css": "./dist/style.css"
   },
-  
-    "files": [
-      "dist",
-      "src/assets"
-    ],
+  "files": [
+    "dist",
+    "src/assets"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -44,19 +43,22 @@
     "url": "https://github.com/yourusername/wallet-connector"
   },
   "peerDependencies": {
+    "ethers": "^6.0.0",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "ethers": "^6.0.0"
+    "react-dom": "^18.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@vitejs/plugin-react": "^4.2.1",
+    "ethers": "^6.9.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "ethers": "^6.9.0",
     "typescript": "^5.3.3",
     "vite": "^5.0.8",
     "vite-plugin-dts": "^3.7.0"
+  },
+  "dependencies": {
+    "@solana/web3.js": "^1.98.4"
   }
 }
