@@ -19,9 +19,9 @@ export const useWalletConnector = () => {
   const [signAllTransactions, setSignAllTransactions] = useState<((transactions: any[]) => Promise<any[]>) | null>(null);
 
   // Check for existing connection on mount
-  useEffect(() => {
-    checkExistingConnection();
-  }, []);
+//   useEffect(() => {
+//     checkExistingConnection();
+//   }, []);
 
   // Set up event listeners
   useEffect(() => {
@@ -92,53 +92,53 @@ export const useWalletConnector = () => {
     setIsConnected(!!address);
   }, [address]);
 
-  const checkExistingConnection = async () => {
-    for (const [key, wallet] of Object.entries(SUPPORTED_WALLETS)) {
-      if (wallet.check()) {
-        try {
-          const walletProvider = wallet.getProvider();
+//   const checkExistingConnection = async () => {
+//     for (const [key, wallet] of Object.entries(SUPPORTED_WALLETS)) {
+//       if (wallet.check()) {
+//         try {
+//           const walletProvider = wallet.getProvider();
           
-          if (wallet.chain === 'Solana') {
-            // Check Solana connection
-            if (walletProvider.isConnected && walletProvider.publicKey) {
-              const sendTransactionWrapper = async (transaction: any, connection: any, options?: any) => {
-                if (walletProvider.signAndSendTransaction) {
-                  const { signature } = await walletProvider.signAndSendTransaction(transaction);
-                  return signature;
-                }
-                const signed = await walletProvider.signTransaction(transaction);
-                const signature = await connection.sendRawTransaction(signed.serialize(), options);
-                return signature;
-              };
+//           if (wallet.chain === 'Solana') {
+//             // Check Solana connection
+//             if (walletProvider.isConnected && walletProvider.publicKey) {
+//               const sendTransactionWrapper = async (transaction: any, connection: any, options?: any) => {
+//                 if (walletProvider.signAndSendTransaction) {
+//                   const { signature } = await walletProvider.signAndSendTransaction(transaction);
+//                   return signature;
+//                 }
+//                 const signed = await walletProvider.signTransaction(transaction);
+//                 const signature = await connection.sendRawTransaction(signed.serialize(), options);
+//                 return signature;
+//               };
               
-              setWalletType(key);
-              setProvider(walletProvider);
-              setAddress(walletProvider.publicKey.toString());
-              setChainId(0);
-              setupSolanaMethods(walletProvider, sendTransactionWrapper);
-              return;
-            }
+//               setWalletType(key);
+//               setProvider(walletProvider);
+//               setAddress(walletProvider.publicKey.toString());
+//               setChainId(0);
+//               setupSolanaMethods(walletProvider, sendTransactionWrapper);
+//               return;
+//             }
           
-          } else {
-            // Check EVM connection
-            const accounts = await walletProvider.request({ method: 'eth_accounts' });
+//           } else {
+//             // Check EVM connection
+//             const accounts = await walletProvider.request({ method: 'eth_accounts' });
             
-            if (accounts.length > 0) {
-              const chainIdHex = await walletProvider.request({ method: 'eth_chainId' });
-              setWalletType(key);
-              setProvider(walletProvider);
-              setAddress(accounts[0]);
-              setChainId(parseInt(chainIdHex, 16));
-              await setupEthersProvider(walletProvider);
-              return;
-            }
-          }
-        } catch (error) {
-          console.error(`Error checking ${wallet.name}:`, error);
-        }
-      }
-    }
-  };
+//             if (accounts.length > 0) {
+//               const chainIdHex = await walletProvider.request({ method: 'eth_chainId' });
+//               setWalletType(key);
+//               setProvider(walletProvider);
+//               setAddress(accounts[0]);
+//               setChainId(parseInt(chainIdHex, 16));
+//               await setupEthersProvider(walletProvider);
+//               return;
+//             }
+//           }
+//         } catch (error) {
+//           console.error(`Error checking ${wallet.name}:`, error);
+//         }
+//       }
+//     }
+//   };
 
   const setupSolanaMethods = (walletProvider: any, sendTxWrapper?: any) => {
     console.log('Setting up Solana methods...');
