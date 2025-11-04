@@ -75,7 +75,7 @@ export const NETWORKS: Record<string, NetworkConfig> = {
   ETHEREUM: {
     id: 1,
     name: 'Ethereum Mainnet',
-    rpcUrl: 'https://mainnet.infura.io/v3/YOUR_INFURA_KEY',
+    rpcUrl: 'https://eth-mainnet.g.alchemy.com/v2/trNMW5_zO5iGvlX4OZ3SjVF-5hLNVsN5',
     chainId: '0x1',
     currency: 'ETH'
   },
@@ -89,15 +89,30 @@ export const NETWORKS: Record<string, NetworkConfig> = {
   POLYGON: {
     id: 137,
     name: 'Polygon Mainnet',
-    rpcUrl: 'https://polygon-rpc.com',
+    rpcUrl: 'https://fabled-snowy-scion.matic.quiknode.pro/990cfac44f7c3e28cb6212001bc7dfb06833100b/',
     chainId: '0x89',
     currency: 'MATIC'
   },
   BSC: {
     id: 56,
     name: 'BNB Smart Chain',
-    rpcUrl: 'https://bsc-dataseed.binance.org',
+    rpcUrl: 'https://frequent-winter-brook.bsc.quiknode.pro/e4836c2092d64623987e3393338fb92e03512504/',
     chainId: '0x38',
     currency: 'BNB'
+  },
+  AVALANCHE: {
+    id: 43114,
+    name: 'Avalanche C-Chain',
+    rpcUrl: 'https://avax-mainnet.g.alchemy.com/v2/gOkgumMo6bV2fWBI5ih89uP7KW99oXye',
+    chainId: '0xA86A',
+    currency: 'AVAX'
+
+  },
+  BASE: {
+    id: 8453,
+    name: 'Base Mainnet',
+    rpcUrl: 'https://base-mainnet.g.alchemy.com/v2/gOkgumMo6bV2fWBI5ih89uP7KW99oXye',
+    chainId: '0x2105',
+    currency: 'ETH'
   }
 };
