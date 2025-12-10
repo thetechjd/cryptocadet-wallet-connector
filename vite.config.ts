@@ -21,7 +21,10 @@ export default defineConfig({
       fileName: (format) => `wallet-connector.${format === 'es' ? 'js' : 'umd.cjs'}`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'ethers'],
+      external: [
+      "react",
+      "react-dom",
+      ],
       output: {
         globals: {
           react: 'React',
