@@ -10,6 +10,9 @@ export default defineConfig({
       insertTypesEntry: true,
     }),
   ],
+  optimizeDeps: {
+    exclude: ["react", "react-dom"]
+  },
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),

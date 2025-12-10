@@ -1,3 +1,4 @@
+"use client";
 export { WalletConnector } from './components/WalletConnector'
 export { WalletSelector } from './components/WalletSelector';
 export { useWalletConnector } from './hooks/useWalletConnector'
