@@ -1,3 +1,4 @@
+"use client"
 import React, { useState, useEffect, useRef } from 'react';
 import { WalletSelector } from './WalletSelector';
 import { useWalletConnector } from '../hooks/useWalletConnector';

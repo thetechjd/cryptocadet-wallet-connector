@@ -1,3 +1,4 @@
+"use client"
 import { WalletInfo, NetworkConfig } from './types';
 import metamaskLogo from './assets/MetaMask_Fox.png';
 import trustwalletLogo from './assets/trust-wallet-icon.png';
