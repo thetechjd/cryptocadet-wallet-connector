@@ -1,3 +1,5 @@
+"use client"
+
 import { useState } from 'react';
 import { WalletConnector } from './components/WalletConnector';
 import { ConnectedWalletData } from './types';
