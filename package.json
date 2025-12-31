@@ -1,16 +1,16 @@
 {
   "name": "@cryptocadet/wallet-connector",
-  "version": "2.4.2",
+  "version": "2.4.3",
   "description": "A lightweight, Web3Modal alternative for connecting to MetaMask, Trust Wallet, Coinbase Wallet, Phantom, and SolFlare for EVM and Solana.",
   "type": "module",
-  "main": "./dist/wallet-connector.umd.cjs",
-  "module": "./dist/wallet-connector.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/wallet-connector.js",
-      "require": "./dist/wallet-connector.umd.cjs",
-      "types": "./dist/index.d.ts"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
     },
     "./styles.css": "./dist/style.css"
   },
